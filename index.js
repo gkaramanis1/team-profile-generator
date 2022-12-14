@@ -5,27 +5,22 @@ const Manager = require('./lib/Manager');
 const Intern = require('./lib/Intern');
 const Engineer = require('./lib/Engineer');
 
-// Class containing all questions
 class Prompt{
     constructor() {
         this.teamArray = [];
     }
 
-    /**
-     * @returns the array of all Employee objects
-     */
-
     getTeamArray() {
         return this.teamArray;
     }
-    
+
 questions() {
     inquirer.prompt(
     {
      type: 'list',
      name: 'employeeType',
      message: "Which type of employee would you like to add to the team?",
-     choices: ['Manager', 'Engineer', 'Intern', 'I finished entering my team info']
+     choices: ['Manager', 'Engineer', 'Intern', 'Create my team info!']
     })
     .then(({employeeType}) => {
         if(employeeType === 'Manager'){
@@ -44,6 +39,7 @@ questions() {
      }
     },
     {
+        
         type: 'number',
         name: 'id',
         message: "Please enter the manager's employee id",
@@ -84,11 +80,9 @@ questions() {
     },
     ])
 
-    // Pushes Manager data into teamArray
     .then( (templateData) => {
         const newManager = new Manager(templateData.name, templateData.id, templateData.email, templateData.officeNumber)
         this.teamArray.push(newManager);
-        // Sends user back to menu
         this.questions();
     });
 
@@ -147,11 +141,9 @@ questions() {
                     }  
                     }
 
-                // Pushes Engineer data into teamArray
                 ]).then( templateData => {
                     const newEngineer = new Engineer(templateData.name, templateData.id, templateData.email, templateData.github);
                     this.teamArray.push(newEngineer);
-                    // Sends user back to menu
                     this.questions();
                 });
 
@@ -210,21 +202,18 @@ questions() {
                 }  
                 }
 
-            // Pushes Intern data into teamArray
             ]).then( templateData => {
                 const newIntern = new Intern(templateData.name, templateData.id, templateData.email, templateData.school);
                 this.teamArray.push(newIntern);
-                // Sends user back to menu
                 this.questions();
             });
 
-        } else if (employeeType === 'I finished entering my team info') {
-            //function that writes the html file in the dist folder
+        } else if (employeeType === 'Create my team info!') {
             const pagehtml = generateHTML(this.getTeamArray());
             fs.writeFile('./dist/index.html', pagehtml, err => {
                 if (err) throw new Error(err);
 
-                console.log('Page created! Check out index.html in the dist/ folder to see it!');
+                console.log('Page created!');
             });
         }
     });
@@ -232,7 +221,6 @@ questions() {
 }
 };
 
-// Activates prompts in CLI
 const prompt = new Prompt();
 prompt.questions();
 

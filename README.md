@@ -8,7 +8,7 @@
 -[Questions](#questions)
 
 ## Description
-This application is used to create a webpage that will display your work team's basic information so that you have quick access to their emails and GitHub profiles. Below is the video of the demonstration of the functionality of the application. 
+This application is used to create a webpage that will display your work team's basic information so that you have quick access to their emails and GitHub profiles. Below is the video of the demonstration of the functionality of the application. [Demonstration](https://app.castify.com/view/0bccc09f-85cd-45ea-9503-7ef08cd3cbea)
 
 ## Installation
 First, run npm install and also install inquirer. To launch or begin this application, enter node index.js.
