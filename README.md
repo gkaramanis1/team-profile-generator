@@ -2,10 +2,10 @@
 
 ## Table of Contents
 -[Description](#description)
--[Installation](#description)
--[Usage](#description)
--[Tests](#description)
--[Questions](#description)
+-[Installation](#installation)
+-[Usage](#usage)
+-[Tests](#tests)
+-[Questions](#questions)
 
 ## Description
 This application is used to create a webpage that will display your work team's basic information so that you have quick access to their emails and GitHub profiles. Below is the video of the demonstration of the functionality of the application. 
